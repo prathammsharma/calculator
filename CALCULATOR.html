@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> CALCULATOR </title>
+    <style>
+    body {
+    background-color: rgb(10, 244, 166);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    }
+
+.calculator {
+    background-color:rgb(9, 1, 59);
+    border-radius: 30px;
+    display: grid;
+    grid-gap: 20px;
+    width: 350px;
+    padding: 80px;
+    text-align: center;
+}
+
+.display {
+    grid-column:span 4;
+    text-align: right;
+    padding: 20px;
+    background-color:rgb(255, 255, 255);
+    border-style:groove;
+}
+
+input[type="text"] {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 50px;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+.buttons {
+    grid-column: span 4;
+    
+}
+
+button {
+    font-size: 24px;
+    padding: 22px;
+    background-color:rgb(84, 84, 104);
+    color:rgb(255, 255, 255);
+    border-color: rgb(255, 0, 255);
+    border-radius: 12px;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: rgb(8, 245, 55);
+}   
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2 style="color: rgb(255, 255, 255);">CASIO-23</h2>
+        <div class="display">
+        <input type="text" id="result">
+        </div>
+        <div class="buttons">
+            <button onclick="append('1')">1</button>
+            <button onclick="append('2')">2</button>
+            <button onclick="append('3')">3</button>
+            <button onclick="cleard()">C</button>
+            <button onclick="append('4')">4</button>
+            <button onclick="append('5')">5</button>
+            <button onclick="append('6')">6</button>
+            <button onclick="append('+')">+</button>
+            <button onclick="append('7')">7</button>
+            <button onclick="append('8')">8</button>
+            <button onclick="append('9')">9</button>
+            <button onclick="append('-')">_</button>
+            <button onclick="append('0')">0</button>
+            <button onclick="append('*')">*</button>
+            <button onclick="append('/')">/</button>
+            <button onclick="Result()">=</button>
+        </div>
+<script>
+let display = document.getElementById('result');
+    let currentInput = '';
+    let operator = '';
+    
+    function append(value) {
+        currentInput += value;
+        display.value = currentInput;
+    }
+    
+    function cleard() {
+        currentInput = '';
+        display.value = '';
+    }
+    
+    function Result() {
+        try {
+            const result = eval(currentInput);
+            display.value = result;
+            currentInput = result.toString();
+        } catch (error) {
+            display.value = 'Error';
+        }
+    }
+</script>
+</body>
+</html>
